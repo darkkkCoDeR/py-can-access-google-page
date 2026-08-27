@@ -6,10 +6,10 @@ from unittest import mock
 @pytest.mark.parametrize(
     "has_internet,is_valid_url,expected",
     [
-        pytest.param(True, True, "Accessible", id="Connection "),
-        (True, False, "Not accessible"),
-        (False, True, "Not accessible"),
-        (False, False, "Not accessible"),
+        pytest.param(True, True, "Accessible", id="valid_url_with_connection"),
+        pytest.param(True, False, "Not accessible", id="invalid_url_with_connection"),
+        pytest.param(False, True, "Not accessible", id="valid_url_without_connection"),
+        pytest.param(False, False, "Not accessible", id="invalid_url_without_connection"),
     ]
 )
 @mock.patch("app.main.has_internet_connection")
